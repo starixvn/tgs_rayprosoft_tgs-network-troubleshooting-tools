@@ -102,6 +102,7 @@ deploy-staging:
       artifacts: true
   only:
     - main
+  when: on_success
   script:
     - deploy_k8s $TgsSettingKey $HelmTemplateFolderName $namespace
     - create_dns 'prod' ${TgsSettingKey}
@@ -130,7 +131,7 @@ deploy-prod:
       artifacts: true
   only:
     - main
-  when: manual
+  when: on_success
   script:
     - deploy_k8s $TgsSettingKey $HelmTemplateFolderName $namespace
     - create_dns 'prod' ${TgsSettingKey}
