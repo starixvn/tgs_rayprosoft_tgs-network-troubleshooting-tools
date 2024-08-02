@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
 	mtr \
 	iputils-ping \
 	curl && \
+	traceroute && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 #Troubleshooter End
