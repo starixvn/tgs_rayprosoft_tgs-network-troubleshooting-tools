@@ -105,7 +105,7 @@ deploy-staging:
   when: on_success
   script:
     - deploy_k8s $TgsSettingKey $HelmTemplateFolderName $namespace
-    - create_dns 'prod' ${TgsSettingKey}
+    - create_dns 'staging' ${TgsSettingKey}
 
 deploy-prod:
   extends: .deploy-k8s-template
