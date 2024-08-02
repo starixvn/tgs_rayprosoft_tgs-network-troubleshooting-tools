@@ -24,8 +24,6 @@ public class TracertController : ControllerBase
 		string domain = "google.com")
 	{
 		var maxHops = 30;
-		var timeout = 5000;
-
 		var ipAddress = Dns.GetHostAddresses(domain).FirstOrDefault()?.ToString();
 		ArgumentException.ThrowIfNullOrWhiteSpace(ipAddress);
 
@@ -39,7 +37,7 @@ public class TracertController : ControllerBase
 		do
 		{
 			pingReplyTime.Start();
-			reply = ping.Send(address, timeout, [0], pingOptions);
+			reply = ping.Send(address: address, timeout: 5000, buffer: [0], options: pingOptions);
 			pingReplyTime.Stop();
 
 			string hostname = string.Empty;

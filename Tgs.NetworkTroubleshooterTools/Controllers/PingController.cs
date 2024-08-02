@@ -30,14 +30,14 @@ public class PingController : ControllerBase
 		var address = result.Answers.ARecords().FirstOrDefault()?.Address;
 		ArgumentException.ThrowIfNullOrWhiteSpace(address?.ToString());
 
+		var ttl = 0;
 		var messageEntries = new List<string>();
 		try
 		{
-			int pingCount = 0;
 			// Ping the host continuously
 			do
 			{
-				PingReply reply = ping.Send(address: address);
+				PingReply reply = ping.Send(address: address, timeout: 5000, buffer: [0]);
 
 				messageEntries.Add(reply != null
 					? $"Reply from {reply.Address}: " +
@@ -46,13 +46,13 @@ public class PingController : ControllerBase
 					$"TTL={reply.Options?.Ttl}"
 					: "Ping failed.");
 
-				pingCount++;
+				ttl++;
 
 				await Task.Delay(
 					millisecondsDelay: 1000,
 					cancellationToken: HttpContext.RequestAborted)
 					.ConfigureAwait(false);
-			} while (pingCount < count);
+			} while (ttl <= count);
 		}
 		catch (Exception ex)
 		{
