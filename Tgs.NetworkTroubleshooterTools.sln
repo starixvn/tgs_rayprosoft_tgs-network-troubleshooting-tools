@@ -5,7 +5,9 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.NetworkTroubleshooterTools", "Tgs.NetworkTroubleshooterTools\Tgs.NetworkTroubleshooterTools.csproj", "{DEE63156-2451-48D9-A06F-D6844CFEBCDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tgs.NetworkTroubleshooterTools.IntegrationTest", "Tgs.NetworkTroubleshooterTools.IntegrationTest\Tgs.NetworkTroubleshooterTools.IntegrationTest.csproj", "{97A4C4B6-55AD-438F-8F11-9EA76575718B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.NetworkTroubleshooterTools.IntegrationTest", "Tgs.NetworkTroubleshooterTools.IntegrationTest\Tgs.NetworkTroubleshooterTools.IntegrationTest.csproj", "{97A4C4B6-55AD-438F-8F11-9EA76575718B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tgs.NetworkTroubleshooterTools.Core", "Tgs.NetworkTroubleshooterTools.Core\Tgs.NetworkTroubleshooterTools.Core.csproj", "{36134316-8FA5-40A7-8553-11F35BC2D40D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{97A4C4B6-55AD-438F-8F11-9EA76575718B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97A4C4B6-55AD-438F-8F11-9EA76575718B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97A4C4B6-55AD-438F-8F11-9EA76575718B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36134316-8FA5-40A7-8553-11F35BC2D40D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36134316-8FA5-40A7-8553-11F35BC2D40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36134316-8FA5-40A7-8553-11F35BC2D40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36134316-8FA5-40A7-8553-11F35BC2D40D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

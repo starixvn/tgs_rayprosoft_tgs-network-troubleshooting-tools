@@ -21,6 +21,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["nuget.config", "."]
 COPY ["Tgs.NetworkTroubleshooterTools/Tgs.NetworkTroubleshooterTools.csproj", "Tgs.NetworkTroubleshooterTools/"]
+COPY ["Tgs.NetworkTroubleshooterTools.Core/Tgs.NetworkTroubleshooterTools.Core.csproj", "Tgs.NetworkTroubleshooterTools.Core/"]
 RUN dotnet restore "./Tgs.NetworkTroubleshooterTools/Tgs.NetworkTroubleshooterTools.csproj"
 COPY . .
 WORKDIR "/src/Tgs.NetworkTroubleshooterTools"

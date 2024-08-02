@@ -1,6 +1,7 @@
 ﻿using DnsClient;
 
 using Microsoft.AspNetCore.Mvc;
+using Tgs.NetworkTroubleshooterTools.Core;
 
 namespace Tgs.NetworkTroubleshooterTools.Controllers;
 
@@ -8,27 +9,20 @@ namespace Tgs.NetworkTroubleshooterTools.Controllers;
 [ApiController]
 public class NslookupController : ControllerBase
 {
+	/// <summary>
+	///
+	/// </summary>
+	/// <param name="nslookupClient"></param>
+	/// <param name="domain"></param>
+	/// <param name="queryType"></param>
+	/// <returns></returns>
 	[HttpGet("{domain}")]
-	public async IAsyncEnumerable<string> GetNslookup(
-		[FromServices] ILookupClient lookupClient,
+	public IAsyncEnumerable<string> GetNslookupAsync(
+		[FromServices] INslookupClient nslookupClient,
 		string domain = "google.com",
 		[FromQuery] string queryType = "A")
-	{
-		var result = await lookupClient.QueryAsync(
-			query: domain,
-			queryType: (QueryType)Enum.Parse(typeof(QueryType), queryType),
-			cancellationToken: HttpContext.RequestAborted)
-			.ConfigureAwait(false);
-		if (result.Answers.ARecords().Any())
-		{
-			foreach (var aRecord in result.Answers.ARecords())
-			{
-				yield return aRecord.ToString();
-			}
-		}
-		else
-		{
-			yield return $"UnKnown 找不到 {domain}: Non-existent domain";
-		}
-	}
+		=> nslookupClient.GetNslookupAsync(
+			domain: domain,
+			queryType: queryType,
+			cancellationToken: HttpContext.RequestAborted);
 }

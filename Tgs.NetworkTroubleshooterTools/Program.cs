@@ -1,7 +1,5 @@
 ﻿using System.Net.Mime;
-using System.Net.NetworkInformation;
 using System.Text.Json.Serialization;
-using DnsClient;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,8 +26,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services
-	.AddTransient<Ping>()
-	.AddTransient<ILookupClient, LookupClient>();
+	.AddNetworkTroubleshooterToolsCore();
 
 builder.Services.AddHealthChecks();
 
