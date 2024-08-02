@@ -22,14 +22,6 @@ public class PingController : ControllerBase
 		string domain = "google.com",
 		[FromQuery] int count = 4)
 	{
-		var result = await lookupClient.QueryAsync(
-			query: domain,
-			queryType: QueryType.A,
-			cancellationToken: HttpContext.RequestAborted)
-			.ConfigureAwait(false);
-		var address = result.Answers.ARecords().FirstOrDefault()?.Address;
-		ArgumentException.ThrowIfNullOrWhiteSpace(address?.ToString());
-
 		var ttl = 0;
 		var messageEntries = new List<string>();
 		try
@@ -37,7 +29,7 @@ public class PingController : ControllerBase
 			// Ping the host continuously
 			do
 			{
-				PingReply reply = ping.Send(address: address, timeout: 5000, buffer: new byte[32]);
+				PingReply reply = ping.Send(hostNameOrAddress: domain, timeout: 5000, buffer: new byte[32]);
 
 				messageEntries.Add(reply != null
 					? $"Reply from {reply.Address}: " +

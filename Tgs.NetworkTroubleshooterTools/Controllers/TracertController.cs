@@ -24,12 +24,6 @@ public class TracertController : ControllerBase
 		string domain = "google.com")
 	{
 		var maxHops = 30;
-		var ipAddress = Dns.GetHostAddresses(domain).FirstOrDefault()?.ToString();
-		ArgumentException.ThrowIfNullOrWhiteSpace(ipAddress);
-
-		// Ensure that the argument address is valid.
-		if (!IPAddress.TryParse(ipAddress, out IPAddress? address))
-			throw new ArgumentException(string.Format("{0} is not a valid IP address.", ipAddress));
 
 		PingOptions pingOptions = new PingOptions(1, true);
 		Stopwatch pingReplyTime = new Stopwatch();
@@ -37,7 +31,7 @@ public class TracertController : ControllerBase
 		do
 		{
 			pingReplyTime.Start();
-			reply = ping.Send(address: address, timeout: 5000, buffer: new byte[32], options: pingOptions);
+			reply = ping.Send(domain, timeout: 5000, buffer: new byte[32], options: pingOptions);
 			pingReplyTime.Stop();
 
 			string hostname = string.Empty;
