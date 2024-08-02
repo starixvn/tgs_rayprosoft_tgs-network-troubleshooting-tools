@@ -19,9 +19,16 @@ public class NslookupController : ControllerBase
 			queryType: (QueryType)Enum.Parse(typeof(QueryType), queryType),
 			cancellationToken: HttpContext.RequestAborted)
 			.ConfigureAwait(false);
-		foreach (var aRecord in result.Answers.ARecords())
+		if (result.Answers.ARecords().Any())
 		{
-			yield return aRecord.ToString();
+			foreach (var aRecord in result.Answers.ARecords())
+			{
+				yield return aRecord.ToString();
+			}
+		}
+		else
+		{
+			yield return $"UnKnown 找不到 {domain}: Non-existent domain";
 		}
 	}
 }

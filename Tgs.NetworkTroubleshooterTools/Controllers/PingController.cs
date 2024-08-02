@@ -1,6 +1,7 @@
 ﻿using System.Net.NetworkInformation;
-using Microsoft.AspNetCore.Mvc;
 using DnsClient;
+
+using Microsoft.AspNetCore.Mvc;
 
 namespace Tgs.NetworkTroubleshooterTools.Controllers;
 
@@ -17,7 +18,6 @@ public class PingController : ControllerBase
 	/// <returns></returns>
 	[HttpGet("{domain}")]
 	public async IAsyncEnumerable<string> GetPing(
-		[FromServices] ILookupClient lookupClient,
 		[FromServices] Ping ping,
 		string domain = "google.com",
 		[FromQuery] int count = 4)
