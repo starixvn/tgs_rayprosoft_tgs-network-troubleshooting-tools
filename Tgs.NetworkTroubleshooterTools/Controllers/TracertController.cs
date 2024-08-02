@@ -37,7 +37,7 @@ public class TracertController : ControllerBase
 		do
 		{
 			pingReplyTime.Start();
-			reply = ping.Send(address: address, timeout: 5000, buffer: [0], options: pingOptions);
+			reply = ping.Send(address: address, timeout: 5000, buffer: new byte[32], options: pingOptions);
 			pingReplyTime.Stop();
 
 			string hostname = string.Empty;

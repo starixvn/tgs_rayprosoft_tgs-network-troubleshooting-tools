@@ -37,7 +37,7 @@ public class PingController : ControllerBase
 			// Ping the host continuously
 			do
 			{
-				PingReply reply = ping.Send(address: address, timeout: 5000, buffer: [0]);
+				PingReply reply = ping.Send(address: address, timeout: 5000, buffer: new byte[32]);
 
 				messageEntries.Add(reply != null
 					? $"Reply from {reply.Address}: " +
