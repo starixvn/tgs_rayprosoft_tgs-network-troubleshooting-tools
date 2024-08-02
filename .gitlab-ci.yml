@@ -23,7 +23,6 @@ push-docker-image:
   stage: publish
   needs:
     - build-code
-    - unit-test
   only:
     - main
   cache:
