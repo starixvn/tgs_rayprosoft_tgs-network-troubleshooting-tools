@@ -8,8 +8,7 @@ namespace Tgs.NetworkTroubleshooterTools.Controllers;
 
 [Route("[controller]")]
 [ApiController]
-public class InfoController(
-	IConfiguration configuration) : ControllerBase
+public class InfoController : ControllerBase
 {
 	/// <summary>
 	/// Gets the asynchronous.
@@ -17,7 +16,9 @@ public class InfoController(
 	/// <param name="_hostingEnvironment">The hosting environment.</param>
 	/// <returns></returns>
 	[HttpGet]
-	public async Task<object> GetAsync([FromServices] IWebHostEnvironment _hostingEnvironment)
+	public async Task<object> GetAsync(
+		[FromServices] IConfiguration configuration,
+		[FromServices] IWebHostEnvironment _hostingEnvironment)
 	{
 		var hostName = Dns.GetHostName();
 		var hostEntry = await Dns.GetHostEntryAsync(hostName).ConfigureAwait(false);
