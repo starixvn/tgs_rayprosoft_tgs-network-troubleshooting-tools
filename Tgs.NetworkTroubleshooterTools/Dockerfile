@@ -7,8 +7,8 @@ RUN apt-get update && apt-get install -y \
 	dnsutils \
 	mtr \
 	iputils-ping \
+	traceroute \
 	curl && \
-	traceroute && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 #Troubleshooter End
