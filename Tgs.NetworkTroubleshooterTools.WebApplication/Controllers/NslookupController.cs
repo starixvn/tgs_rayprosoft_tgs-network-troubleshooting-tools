@@ -3,7 +3,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Tgs.NetworkTroubleshooterTools.Core;
 
-namespace Tgs.NetworkTroubleshooterTools.Controllers;
+namespace Tgs.NetworkTroubleshooterTools.WebApplication.Controllers;
 
 [Route("[controller]")]
 [ApiController]

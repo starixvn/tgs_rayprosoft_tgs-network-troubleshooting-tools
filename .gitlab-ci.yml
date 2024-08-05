@@ -7,7 +7,7 @@ variables:
   ImageName: pgtgs/network-troubleshooting-tools
   TgsSettingKey: network-troubleshooting-tools
   HelmTemplateFolderName: network-troubleshooting-tools
-  BuildCacheKey: Tgs.NetworkTroubleshooterTools.$CI_PIPELINE_IID
+  BuildCacheKey: Tgs.NetworkTroubleshooterTools.WebApplication.$CI_PIPELINE_IID
 
 stages:
   - build
@@ -37,14 +37,14 @@ push-docker-image:
     untracked: true   
     policy: pull
   script:
-    #- dotnet build "Tgs.NetworkTroubleshooterTools/Tgs.NetworkTroubleshooterTools.csproj" -c $BuildConfiguration -t:ContainerBuild -p:DockerfileTag="$ImageName:$Tag" --no-restore
-    #- dotnet publish "Tgs.NetworkTroubleshooterTools" 
+    #- dotnet build "Tgs.NetworkTroubleshooterTools.WebApplication/Tgs.NetworkTroubleshooterTools.WebApplication.csproj" -c $BuildConfiguration -t:ContainerBuild -p:DockerfileTag="$ImageName:$Tag" --no-restore
+    #- dotnet publish "Tgs.NetworkTroubleshooterTools.WebApplication" 
     #   --os linux --arch x64
     #   /t:PublishContainer
     #   -c $BuildConfiguration
     #   /p:ContainerRepository=$ImageName
     #   /p:ContainerImageTag=$Tag
-    - docker build -t "$ImageName:$Tag" --build-arg [BUILD_CONFIGURATION]=$BuildConfiguration -f "Tgs.NetworkTroubleshooterTools/Dockerfile" . --no-cache
+    - docker build -t "$ImageName:$Tag" --build-arg [BUILD_CONFIGURATION]=$BuildConfiguration -f "Tgs.NetworkTroubleshooterTools.WebApplication/Dockerfile" . --no-cache
     - docker push $ImageName:$Tag
 
 push-k8s-template:

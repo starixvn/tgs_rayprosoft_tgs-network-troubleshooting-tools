@@ -1,0 +1,28 @@
+﻿using Tgs.NetworkTroubleshooterTools.Core;
+
+namespace Tgs.NetworkTroubleshooterTools.ConsoleApp;
+internal class NslookupOperationService(INslookupClient nslookupClient) : IOperationService
+{
+	/// <summary>
+	/// Operations the asynchronous.
+	/// </summary>
+	public async Task OperationAsync()
+	{
+		Console.Write("請輸入Domain(google.com):");
+		var domain = Console.ReadLine();
+		domain = (!string.IsNullOrWhiteSpace(domain)) ? domain : "google.com";
+
+		Console.Write("請輸入Domain Type(A):");
+		var queryType = Console.ReadLine();
+		queryType = (!string.IsNullOrWhiteSpace(queryType)) ? domain : "A";
+
+		Console.WriteLine($"Nslookup {domain}({queryType})");
+
+		var reply = nslookupClient.GetNslookupAsync(domain: domain, queryType: queryType);
+
+		await foreach (var result in reply)
+		{
+			Console.WriteLine(result);
+		}
+	}
+}

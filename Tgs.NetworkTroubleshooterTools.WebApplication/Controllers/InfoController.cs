@@ -4,7 +4,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Tgs.NetworkTroubleshooterTools.Controllers;
+namespace Tgs.NetworkTroubleshooterTools.WebApplication.Controllers;
 
 [Route("[controller]")]
 [ApiController]

@@ -2,7 +2,7 @@
 using Tgs.NetworkTroubleshooterTools.Core;
 using Tgs.NetworkTroubleshooterTools.Core.Models;
 
-namespace Tgs.NetworkTroubleshooterTools.Controllers;
+namespace Tgs.NetworkTroubleshooterTools.WebApplication.Controllers;
 
 [Route("[controller]")]
 [ApiController]
