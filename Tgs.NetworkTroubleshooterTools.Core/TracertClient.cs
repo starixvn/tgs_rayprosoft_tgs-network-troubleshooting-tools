@@ -7,15 +7,8 @@ using Tgs.NetworkTroubleshooterTools.Core.Models;
 
 namespace Tgs.NetworkTroubleshooterTools.Core;
 
-internal class TracertClient : ITracertClient
+internal class TracertClient(Ping ping) : ITracertClient
 {
-	private readonly Ping _ping;
-
-	public TracertClient(Ping ping)
-	{
-		_ping = ping ?? throw new ArgumentNullException(nameof(ping));
-	}
-
 	public async IAsyncEnumerable<TracertEntry> GetTracertAsync(string domain = "google.com", int maxHops = 30, [EnumeratorCancellation] CancellationToken cancellationToken = default)
 	{
 		var ipAddress = (Dns.GetHostAddresses(domain).FirstOrDefault()?.ToString())
@@ -25,13 +18,17 @@ internal class TracertClient : ITracertClient
 		if (!IPAddress.TryParse(ipAddress, out IPAddress? address))
 			throw new ArgumentException(string.Format("{0} is not a valid IP address.", ipAddress));
 
+		var _defaultSendBuffer = new byte[32];
+		for (int i = 0; i < 32; i++)
+			_defaultSendBuffer[i] = (byte)((int)'a' + i % 23);
+
 		PingOptions pingOptions = new PingOptions(1, true);
 		Stopwatch pingReplyTime = new Stopwatch();
 		PingReply reply;
 		do
 		{
 			pingReplyTime.Start();
-			reply = _ping.Send(address, timeout: 5000, buffer: new byte[32], options: pingOptions);
+			reply = await ping.SendPingAsync(address, timeout: TimeSpan.FromSeconds(5), buffer: null, options: pingOptions, cancellationToken: cancellationToken).ConfigureAwait(false);
 			pingReplyTime.Stop();
 
 			string hostname = string.Empty;

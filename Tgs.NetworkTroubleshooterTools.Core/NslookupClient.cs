@@ -3,18 +3,11 @@ using DnsClient;
 
 namespace Tgs.NetworkTroubleshooterTools.Core;
 
-internal class NslookupClient : INslookupClient
+internal class NslookupClient(ILookupClient lookupClient) : INslookupClient
 {
-	private readonly ILookupClient _lookupClient;
-
-	public NslookupClient(ILookupClient lookupClient)
-	{
-		_lookupClient = lookupClient ?? throw new ArgumentNullException(nameof(lookupClient));
-	}
-
 	public async IAsyncEnumerable<string> GetNslookupAsync(string domain = "google.com", string queryType = "A", [EnumeratorCancellation] CancellationToken cancellationToken = default)
 	{
-		var result = await _lookupClient.QueryAsync(
+		var result = await lookupClient.QueryAsync(
 			query: domain,
 			queryType: (QueryType)Enum.Parse(typeof(QueryType), queryType),
 			cancellationToken: cancellationToken)
