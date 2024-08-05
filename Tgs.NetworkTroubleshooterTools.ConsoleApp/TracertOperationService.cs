@@ -1,6 +1,7 @@
 ﻿using Tgs.NetworkTroubleshooterTools.Core;
 
 namespace Tgs.NetworkTroubleshooterTools.ConsoleApp;
+
 internal class TracertOperationService(ITracertClient tracertClient) : IOperationService
 {
 	/// <summary>
@@ -18,7 +19,7 @@ internal class TracertOperationService(ITracertClient tracertClient) : IOperatio
 
 		Console.WriteLine($"Tracert {domain}({maxHops})");
 
-		var reply = tracertClient.GetTracertAsync(domain: domain,maxHops);
+		var reply = tracertClient.GetTracertAsync(domain: domain, maxHops);
 
 		await foreach (var result in reply)
 		{

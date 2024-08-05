@@ -1,4 +1,5 @@
 ﻿namespace Tgs.NetworkTroubleshooterTools.ConsoleApp;
+
 public interface IOperationService
 {
 	/// <summary>

@@ -1,6 +1,7 @@
 ﻿using Tgs.NetworkTroubleshooterTools.Core;
 
 namespace Tgs.NetworkTroubleshooterTools.ConsoleApp;
+
 internal class NslookupOperationService(INslookupClient nslookupClient) : IOperationService
 {
 	/// <summary>
