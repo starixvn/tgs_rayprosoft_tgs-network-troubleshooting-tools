@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using Tgs.NetworkTroubleshooterTools.Core.Models;
 
 namespace Tgs.NetworkTroubleshooterTools.Core;
@@ -21,10 +16,8 @@ internal class TracertClient : ITracertClient
 		_ping = ping ?? throw new ArgumentNullException(nameof(ping));
 	}
 
-	public async IAsyncEnumerable<TracertEntry> GetTracertAsync(string domain = "google.com", [EnumeratorCancellation] CancellationToken cancellationToken = default)
+	public async IAsyncEnumerable<TracertEntry> GetTracertAsync(string domain = "google.com", int maxHops = 30, [EnumeratorCancellation] CancellationToken cancellationToken = default)
 	{
-		var maxHops = 30;
-
 		var ipAddress = (Dns.GetHostAddresses(domain).FirstOrDefault()?.ToString())
 			?? throw new ArgumentException(string.Format("{0} is not a valid IP address.", domain));
 

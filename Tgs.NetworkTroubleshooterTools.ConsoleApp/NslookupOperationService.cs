@@ -14,7 +14,7 @@ internal class NslookupOperationService(INslookupClient nslookupClient) : IOpera
 
 		Console.Write("請輸入Domain Type(A):");
 		var queryType = Console.ReadLine();
-		queryType = (!string.IsNullOrWhiteSpace(queryType)) ? domain : "A";
+		queryType = (!string.IsNullOrWhiteSpace(queryType)) ? queryType : "A";
 
 		Console.WriteLine($"Nslookup {domain}({queryType})");
 

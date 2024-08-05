@@ -12,9 +12,13 @@ internal class TracertOperationService(ITracertClient tracertClient) : IOperatio
 		var domain = Console.ReadLine();
 		domain = (!string.IsNullOrWhiteSpace(domain)) ? domain : "google.com";
 
-		Console.WriteLine($"Tracert {domain}");
+		Console.Write("請輸次數(30):");
+		var maxHopsString = Console.ReadLine();
+		var maxHops = (!string.IsNullOrWhiteSpace(maxHopsString)) ? int.Parse(maxHopsString) : 30;
 
-		var reply = tracertClient.GetTracertAsync(domain: domain);
+		Console.WriteLine($"Tracert {domain}({maxHops})");
+
+		var reply = tracertClient.GetTracertAsync(domain: domain,maxHops);
 
 		await foreach (var result in reply)
 		{

@@ -28,18 +28,26 @@ foreach (var dateType in dict)
 
 do
 {
-	Console.WriteLine(options);
-	Console.Write("選擇操作模式:");
-
-	var operaterString = Console.ReadLine();
-
-	operater = (!string.IsNullOrWhiteSpace(operaterString)) ? ((OperationType)Convert.ToInt32(operaterString)) : OperationType.Exit;
-
-	if (operater != OperationType.Exit)
+	try
 	{
-		Console.WriteLine("操作模式:{0}", operater.ToString());
+		Console.WriteLine(options);
+		Console.Write("選擇操作模式:");
 
-		var operationService = app.Services.GetKeyedService<IOperationService>(operater.ToString()) ?? throw new ArgumentNullException(operater.ToString());
-		await operationService.OperationAsync().ConfigureAwait(false);
+		var operaterString = Console.ReadLine();
+
+		operater = (!string.IsNullOrWhiteSpace(operaterString)) ? ((OperationType)Convert.ToInt32(operaterString)) : OperationType.Exit;
+
+		if (operater != OperationType.Exit)
+		{
+			Console.WriteLine("操作模式:{0}", operater.ToString());
+
+			var operationService = app.Services.GetKeyedService<IOperationService>(operater.ToString()) ?? throw new ArgumentNullException(operater.ToString());
+			await operationService.OperationAsync().ConfigureAwait(false);
+			Console.WriteLine();
+		}
+	}
+	catch (Exception ex)
+	{
+		Console.WriteLine(ex.Message);
 	}
 } while (operater != OperationType.Exit);
