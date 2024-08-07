@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Tgs.NetworkTroubleshooterTools.Core;
-using Tgs.NetworkTroubleshooterTools.Core.Models;
+using Tgs.Network.Troubleshooter.Tools.Core;
+using Tgs.Network.Troubleshooter.Tools.Core.Models;
 
-namespace Tgs.NetworkTroubleshooterTools.WebApplication.Controllers;
+namespace Tgs.Network.Troubleshooter.Tools.WebApplication.Controllers;
 
 [Route("[controller]")]
 [ApiController]

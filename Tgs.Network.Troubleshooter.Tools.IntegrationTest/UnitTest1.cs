@@ -1,4 +1,4 @@
-﻿namespace Tgs.NetworkTroubleshooterTools.IntegrationTest;
+﻿namespace Tgs.Network.Troubleshooter.Tools.IntegrationTest;
 
 public class UnitTest1
 {

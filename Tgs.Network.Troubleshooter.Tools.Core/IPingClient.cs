@@ -1,4 +1,4 @@
-﻿namespace Tgs.NetworkTroubleshooterTools.Core;
+﻿namespace Tgs.Network.Troubleshooter.Tools.Core;
 
 public interface IPingClient
 {

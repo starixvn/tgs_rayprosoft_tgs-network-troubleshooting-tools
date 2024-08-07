@@ -1,6 +1,6 @@
-﻿using Tgs.NetworkTroubleshooterTools.Core.Models;
+﻿using Tgs.Network.Troubleshooter.Tools.Core.Models;
 
-namespace Tgs.NetworkTroubleshooterTools.Core;
+namespace Tgs.Network.Troubleshooter.Tools.Core;
 
 public interface ITracertClient
 {

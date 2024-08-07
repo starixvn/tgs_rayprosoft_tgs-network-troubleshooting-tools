@@ -1,6 +1,7 @@
-﻿using Tgs.NetworkTroubleshooterTools.Core;
+﻿using Tgs.Network.Troubleshooter.Tools.ConsoleApp;
+using Tgs.Network.Troubleshooter.Tools.Core;
 
-namespace Tgs.NetworkTroubleshooterTools.ConsoleApp;
+namespace Tgs.Network.Troubleshooter.Tools.ConsoleApp;
 
 internal class PingOperationService(IPingClient pingClient) : IOperationService
 {

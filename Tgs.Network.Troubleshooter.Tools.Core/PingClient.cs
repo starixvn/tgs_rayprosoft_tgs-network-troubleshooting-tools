@@ -3,8 +3,9 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using DnsClient;
+using Tgs.Network.Troubleshooter.Tools.Core;
 
-namespace Tgs.NetworkTroubleshooterTools.Core;
+namespace Tgs.Network.Troubleshooter.Tools.Core;
 
 internal class PingClient(
 	ILookupClient lookupClient,

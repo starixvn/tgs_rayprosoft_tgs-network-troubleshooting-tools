@@ -1,6 +1,6 @@
 ﻿using System.Net.NetworkInformation;
 
-namespace Tgs.NetworkTroubleshooterTools.Core.Models;
+namespace Tgs.Network.Troubleshooter.Tools.Core.Models;
 
 public class TracertEntry
 {

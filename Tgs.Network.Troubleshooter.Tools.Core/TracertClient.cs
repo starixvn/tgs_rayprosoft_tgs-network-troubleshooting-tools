@@ -3,9 +3,9 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
-using Tgs.NetworkTroubleshooterTools.Core.Models;
+using Tgs.Network.Troubleshooter.Tools.Core.Models;
 
-namespace Tgs.NetworkTroubleshooterTools.Core;
+namespace Tgs.Network.Troubleshooter.Tools.Core;
 
 internal class TracertClient(Ping ping) : ITracertClient
 {

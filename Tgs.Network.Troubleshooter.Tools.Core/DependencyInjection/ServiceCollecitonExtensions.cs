@@ -1,6 +1,6 @@
 ﻿using System.Net.NetworkInformation;
 using DnsClient;
-using Tgs.NetworkTroubleshooterTools.Core;
+using Tgs.Network.Troubleshooter.Tools.Core;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

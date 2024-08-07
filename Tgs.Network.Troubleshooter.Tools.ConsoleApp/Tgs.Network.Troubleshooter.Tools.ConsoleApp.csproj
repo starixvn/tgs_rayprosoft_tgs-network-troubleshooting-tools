@@ -12,7 +12,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Tgs.NetworkTroubleshooterTools.Core\Tgs.NetworkTroubleshooterTools.Core.csproj" />
+	  <ProjectReference Include="..\Tgs.Network.Troubleshooter.Tools.Core\Tgs.Network.Troubleshooter.Tools.Core.csproj" />
 	</ItemGroup>
 
 </Project>
