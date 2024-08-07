@@ -1,9 +1,7 @@
-﻿using System.IO.Pipes;
-using System.Net;
+﻿using System.Net;
 using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using DnsClient;
-using Tgs.Network.Troubleshooter.Tools.Core;
 
 namespace Tgs.Network.Troubleshooter.Tools.Core;
 
@@ -11,7 +9,7 @@ internal class PingClient(
 	ILookupClient lookupClient,
 	Ping ping) : IPingClient
 {
-	public async IAsyncEnumerable<string> GetPingAsync(string domain = "google.com", int count = 4, [EnumeratorCancellation] CancellationToken cancellationToken = default)
+	public async IAsyncEnumerable<string> GetPingAsync(string domain = "google.com", string queryType = "A", int count = 4, [EnumeratorCancellation] CancellationToken cancellationToken = default)
 	{
 		var ttl = 0;
 
@@ -19,7 +17,7 @@ internal class PingClient(
 
 		var result = await lookupClient.QueryAsync(
 			query: domain,
-			queryType: QueryType.A,
+			queryType: (QueryType)Enum.Parse(typeof(QueryType), queryType),
 			cancellationToken: cancellationToken)
 			.ConfigureAwait(false);
 
@@ -40,7 +38,7 @@ internal class PingClient(
 			ttl++;
 
 			await Task.Delay(
-				millisecondsDelay: 1000,
+				delay: TimeSpan.FromSeconds(1),
 				cancellationToken: cancellationToken)
 				.ConfigureAwait(false);
 		} while (ttl < count);

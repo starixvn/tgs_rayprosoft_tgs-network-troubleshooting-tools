@@ -1,5 +1,4 @@
-﻿using Tgs.Network.Troubleshooter.Tools.ConsoleApp;
-using Tgs.Network.Troubleshooter.Tools.Core;
+﻿using Tgs.Network.Troubleshooter.Tools.Core;
 
 namespace Tgs.Network.Troubleshooter.Tools.ConsoleApp;
 

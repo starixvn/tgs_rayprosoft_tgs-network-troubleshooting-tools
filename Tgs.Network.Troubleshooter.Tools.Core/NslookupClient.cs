@@ -1,6 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
 using DnsClient;
-using Tgs.Network.Troubleshooter.Tools.Core;
 
 namespace Tgs.Network.Troubleshooter.Tools.Core;
 
